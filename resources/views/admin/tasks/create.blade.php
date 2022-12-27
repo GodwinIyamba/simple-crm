@@ -12,12 +12,19 @@
                 <a href="{{ route('admin.tasks.index') }}" class="btn btn-link">All Tasks</a>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.tasks.store') }}" method="post">
+                <form action="{{ route('admin.tasks.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Title</label>
                         <input type="text" name="title" :value="{{ old('title') }}" class="form-control" placeholder="">
                         @error('title')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">File<small>(if any)</small></label>
+                        <input name="file" class="form-control" type="file">
+                        @error('file')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>

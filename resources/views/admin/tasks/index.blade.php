@@ -7,7 +7,7 @@
         <div class="card mt-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                         <span class="fs-4">
-                            Projects
+                            Tasks
                         </span>
                         <a href="{{ route('admin.tasks.create') }}" class="btn btn-success text-white">Create Tasks</a>
             </div>

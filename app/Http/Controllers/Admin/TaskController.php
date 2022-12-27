@@ -30,7 +30,11 @@ class TaskController extends Controller
 
     public function store(TaskStoreRequest $request)
     {
-        Task::create($request->validated());
+        $task = Task::create($request->validated());
+
+        if ($request->hasFile('file')) {
+            $task->addMediaFromRequest('file')->toMediaCollection('tasks');
+        }
 
         return redirect()->route('admin.tasks.index');
     }
@@ -46,6 +50,17 @@ class TaskController extends Controller
     public function update(TaskUpdateRequest $request, Task $task)
     {
         $task->update($request->validated());
+
+        if($request->hasFile('file')) {
+            if($task->hasMedia('tasks')) {
+                $files = $task->getMedia('tasks');
+                foreach($files as $file) {
+                    $file->delete();
+                }
+            }
+
+            $task->addMediaFromRequest('file')->toMediaCollection('tasks');
+        }
 
         return redirect()->route('admin.tasks.index');
     }

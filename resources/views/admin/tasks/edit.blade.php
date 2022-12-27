@@ -12,7 +12,7 @@
                 <a href="{{ route('admin.tasks.index') }}" class="btn btn-link">All Tasks</a>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.tasks.update', $task) }}" method="post">
+                <form action="{{ route('admin.tasks.update', $task) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -20,6 +20,13 @@
                         <input type="text" name="title" value="{{ $task->title }}" class="form-control" placeholder="">
                         @error('title')
                             <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">File<small>(if any)</small></label>
+                        <input name="file" class="form-control" type="file">
+                        @error('file')
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
