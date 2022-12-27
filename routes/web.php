@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,7 +61,8 @@ Route::middleware([
         Route::view('/dashboard', 'simple_user.dashboard')->name('dashboard');
     });
 
-    Route::middleware('role:admin')->prefix('admin')->as('admin.')->namespace('Admin')->group(function(){
+    Route::middleware('role:admin')->prefix('admin')->as('admin.')->group(function(){
         Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+        Route::resource('projects', ProjectController::class);
     });
 });
