@@ -10,12 +10,14 @@ class TaskController extends Controller
 {
     public function index()
     {
-        //
+        $tasks = Task::latest()->get();
+
+        return view('admin.tasks.index', compact('tasks'));
     }
 
     public function create()
     {
-        //
+        return view('admin.tasks.create');
     }
 
     public function store(Request $request)
@@ -23,14 +25,9 @@ class TaskController extends Controller
         //
     }
 
-    public function show(Task $task)
-    {
-        //
-    }
-
     public function edit(Task $task)
     {
-        //
+        return view('admin.tasks.edit', compact('task'));
     }
 
     public function update(Request $request, Task $task)

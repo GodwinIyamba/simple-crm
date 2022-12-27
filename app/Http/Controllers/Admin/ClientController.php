@@ -10,12 +10,14 @@ class ClientController extends Controller
 {
     public function index()
     {
-        //
+        $clients = Client::latest()->get();
+
+        return view('admin.clients.index', compact('clients'));
     }
 
     public function create()
     {
-        //
+        return view('admin.clients.create');
     }
 
     public function store(Request $request)
@@ -23,14 +25,9 @@ class ClientController extends Controller
         //
     }
 
-    public function show(Client $client)
-    {
-        //
-    }
-
     public function edit(Client $client)
     {
-        //
+        return view('admin.clients.edit', compact('client'));
     }
 
     public function update(Request $request, Client $client)

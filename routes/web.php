@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TaskController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,6 +65,8 @@ Route::middleware([
 
     Route::middleware('role:admin')->prefix('admin')->as('admin.')->group(function(){
         Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+        Route::resource('clients', ClientController::class)->except('show');
         Route::resource('projects', ProjectController::class);
+        Route::resource('tasks', TaskController::class)->except('show');
     });
 });
