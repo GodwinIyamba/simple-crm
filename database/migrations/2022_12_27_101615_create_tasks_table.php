@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('deadline');
             $table->boolean('status');
             $table->boolean('priority');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

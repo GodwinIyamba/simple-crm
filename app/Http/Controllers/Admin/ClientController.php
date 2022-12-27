@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\clients\ClientStoreRequest;
+use App\Http\Requests\clients\ClientUpdateRequest;
 use App\Models\Client;
-use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -20,9 +21,11 @@ class ClientController extends Controller
         return view('admin.clients.create');
     }
 
-    public function store(Request $request)
+    public function store(ClientStoreRequest $request)
     {
-        //
+        Client::create($request->validated());
+
+        return redirect()->route('admin.clients.index');
     }
 
     public function edit(Client $client)
@@ -30,13 +33,17 @@ class ClientController extends Controller
         return view('admin.clients.edit', compact('client'));
     }
 
-    public function update(Request $request, Client $client)
+    public function update(ClientUpdateRequest $request, Client $client)
     {
-        //
+        $client->update($request->validated());
+
+        return redirect()->route('admin.clients.index');
     }
 
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+
+        return back();
     }
 }

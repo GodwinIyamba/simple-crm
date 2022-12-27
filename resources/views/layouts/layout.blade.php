@@ -30,13 +30,17 @@
 </head>
 <body>
 
+{{--    @include('layouts.header')--}}
 
     {{--SIDBAR--}}
     @yield('sidebar')
 
-    {{--CONTENT--}}
-    @yield('content')
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+        @include('layouts.header')
 
+        {{--CONTENT--}}
+        @yield('content')
+    </div>
 
 <!-- Icons-->
 <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js" integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4" crossorigin="anonymous"></script>

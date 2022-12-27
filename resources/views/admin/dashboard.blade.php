@@ -3,9 +3,7 @@
     @include('admin.sidebar')
 @endsection
 @section('content')
-    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
-        @include('layouts.header')
-        <div class="body flex-grow-1 px-3">
+    <div class="body flex-grow-1 px-3">
             <div class="container-lg">
                 <div class="row">
                     <div class="col-sm-6 col-lg-3">
@@ -180,5 +178,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
