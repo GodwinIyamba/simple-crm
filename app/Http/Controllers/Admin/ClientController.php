@@ -46,4 +46,19 @@ class ClientController extends Controller
 
         return back();
     }
+
+    public function status(Client $client)
+    {
+        if($client->status == 1) {
+            $client->update([
+                'status' => 0
+            ]);
+        } else {
+            $client->update([
+                'status' => 1
+            ]);
+        }
+
+        return back();
+    }
 }

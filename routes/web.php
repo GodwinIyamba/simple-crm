@@ -67,8 +67,12 @@ Route::middleware([
     Route::middleware('role:admin')->prefix('admin')->as('admin.')->group(function(){
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
         Route::get('/users', [AdminController::class, 'index'])->name('users.index');
+
+        Route::get('/clients/{client}/status', [ClientController::class, 'status'])->name('clients.status');
         Route::resource('clients', ClientController::class)->except('show');
+
         Route::resource('projects', ProjectController::class);
+
         Route::resource('tasks', TaskController::class)->except('show');
     });
 });

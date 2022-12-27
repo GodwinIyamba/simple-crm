@@ -8,6 +8,7 @@ use App\Http\Requests\projects\ProjectUpdateRequest;
 use App\Models\Client;
 use App\Models\Project;
 use App\Models\User;
+use App\Notifications\ProjectAssigned;
 use Illuminate\Database\Eloquent\Builder;
 
 class ProjectController extends Controller
@@ -31,7 +32,11 @@ class ProjectController extends Controller
 
     public function store(ProjectStoreRequest $request)
     {
-        Project::create($request->validated());
+        $project = Project::create($request->validated());
+
+        $user = User::findOrFail($request->user_id);
+        $user->notify(new ProjectAssigned($project));
+
         return redirect()->route('admin.projects.index');
     }
 

@@ -7,6 +7,7 @@ use App\Http\Requests\tasks\TaskStoreRequest;
 use App\Http\Requests\tasks\TaskUpdateRequest;
 use App\Models\Task;
 use App\Models\User;
+use App\Notifications\TaskAssigned;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -31,6 +32,9 @@ class TaskController extends Controller
     public function store(TaskStoreRequest $request)
     {
         $task = Task::create($request->validated());
+
+        $user = User::findOrFail($request->user_id);
+        $user->notify(new TaskAssigned($task));
 
         if ($request->hasFile('file')) {
             $task->addMediaFromRequest('file')->toMediaCollection('tasks');
