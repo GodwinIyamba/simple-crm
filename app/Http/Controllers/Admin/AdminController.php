@@ -9,6 +9,7 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use function PHPUnit\Framework\isEmpty;
 
 class AdminController extends Controller
@@ -34,5 +35,12 @@ class AdminController extends Controller
         $tasks = Task::with('user')->latest()->get();
 
         return view('admin.dashboard', compact('users', 'clients', 'projects', 'tasks'));
+    }
+
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+
+        return redirect('/');
     }
 }
