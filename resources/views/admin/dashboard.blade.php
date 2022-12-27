@@ -40,6 +40,7 @@
                     <!-- /.col-->
                 </div>
             </div>
+        @unless($users->isEmpty())
             <div class="container-lg mb-4">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
@@ -75,13 +76,16 @@
                     </div>
                 </div>
             </div>
+        @endunless
+
+        @unless($clients->isEmpty())
             <div class="container-lg mb-4">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span class="fs-4">
                             Clients
                         </span>
-                        <a href="" class="btn btn-dark">View all</a>
+                        <a href="{{ route('admin.clients.index') }}" class="btn btn-dark">View all</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
@@ -108,13 +112,16 @@
                     </div>
                 </div>
             </div>
+        @endunless
+
+        @unless($projects->isEmpty())
             <div class="container-lg mb-4">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span class="fs-4">
                             Projects
                         </span>
-                        <a href="" class="btn btn-dark">View all</a>
+                        <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">View all</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
@@ -160,6 +167,9 @@
                     </div>
                 </div>
             </div>
+        @endunless
+
+        @unless($tasks->isEmpty())
             <div class="container-lg mb-4">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
@@ -228,5 +238,6 @@
                     </div>
                 </div>
             </div>
+        @endunless
         </div>
 @endsection
