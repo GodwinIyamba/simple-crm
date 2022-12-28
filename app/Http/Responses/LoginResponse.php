@@ -10,16 +10,12 @@ class LoginResponse implements LoginResponseContract
 
     public function toResponse($request)
     {
-
-        // below is the existing response
-        // replace this with your own code
-        // the user can be located with Auth facade
-
-        $roles = Auth::user()->getRoleNames();
+        $user = Auth::user();
+        $roles = $user->getRoleNames();
         foreach ($roles as $role) {
             switch ($role ) {
                 case 'user':
-                    return redirect()->route('user.dashboard');
+                    return redirect()->route('user.dashboard', $user);
                 case 'admin':
                     return redirect()->route('admin.dashboard');
                 default:

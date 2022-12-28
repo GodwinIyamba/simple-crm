@@ -24,4 +24,19 @@ class UserController extends Controller
 
         return view('simple_user.dashboard', compact( 'clients','projects', 'tasks'));
     }
+
+    public function client()
+    {
+        
+    }
+
+    public function project()
+    {
+        
+    }
+
+    public function task()
+    {
+        
+    }
 }
