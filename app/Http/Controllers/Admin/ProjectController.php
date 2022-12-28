@@ -35,6 +35,7 @@ class ProjectController extends Controller
         $project = Project::create($request->validated());
 
         $user = User::findOrFail($request->user_id);
+
         $user->notify(new ProjectAssigned($project));
 
         return redirect()->route('admin.projects.index');

@@ -1,6 +1,9 @@
 @extends('layouts.layout')
 @section('sidebar')
-    @include('simple_user.sidebar')
+    @include('simple_user.body.sidebar')
+@endsection
+@section('header')
+    @include('simple_user.body.header')
 @endsection
 @section('content')
     <div class="container-lg mb-4">

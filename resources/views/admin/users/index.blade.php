@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('sidebar')
-    @include('admin.sidebar')
+    @include('admin.body.sidebar')
 @endsection
 @section('content')
     <div class="container">
@@ -12,17 +12,17 @@
             </div>
             <div class="card-body">
                 <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Address</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($users as $user)
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($users as $user)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $user->name }}</td>
@@ -30,10 +30,10 @@
                             <td>{{ $user->phone }}</td>
                             <td>{{ $user->address }}</td>
                         </tr>
-                        @endforeach
-                        </tbody>
+                    @endforeach
+                    </tbody>
 
-                    </table>
+                </table>
             </div>
         </div>
     </div>

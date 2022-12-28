@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('sidebar')
-    @include('admin.sidebar')
+    @include('admin.body.sidebar')
 @endsection
 @section('content')
     <div class="container">
@@ -17,21 +17,25 @@
                     @method('PUT')
                     <div class="mb-3">
                         <label class="form-label">Title</label>
-                        <input type="text" name="title" value="{{ $project->title }}" class="form-control" placeholder="">
+                        <input type="text" name="title" value="{{ $project->title }}" class="form-control"
+                               placeholder="">
                         @error('title')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Description</label>
-                        <textarea name="description" class="form-control" rows="10">{{ $project->description }}</textarea>
+                        <textarea name="description" class="form-control"
+                                  rows="10">{{ $project->description }}</textarea>
                         @error('description')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deadline</label>
-                        <input type="date" name="deadline" value="{{ \Carbon\Carbon::parse($project->deadline)->format('Y-m-d') }}" min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" class="form-control" placeholder="">
+                        <input type="date" name="deadline"
+                               value="{{ \Carbon\Carbon::parse($project->deadline)->format('Y-m-d') }}"
+                               min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" class="form-control" placeholder="">
                         @error('deadline')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -41,7 +45,8 @@
                         <select class="form-select" name="user_id" aria-label="Default select example">
                             <option disabled>Select User</option>
                             @foreach($users as $user)
-                                <option value="{{ $user->id }}" @if($project->user->name == $user->name) selected @endif>{{ $user->name }}</option>
+                                <option value="{{ $user->id }}"
+                                        @if($project->user->name == $user->name) selected @endif>{{ $user->name }}</option>
                             @endforeach
                         </select>
                         @error('user_id')
@@ -53,7 +58,8 @@
                         <select class="form-select" name="client_id" aria-label="Default select example">
                             <option disabled>Select Client</option>
                             @foreach($clients as $client)
-                                <option value="{{ $client->id }}" @if($project->client->name == $client->name) selected @endif>{{ $client->name }}</option>
+                                <option value="{{ $client->id }}"
+                                        @if($project->client->name == $client->name) selected @endif>{{ $client->name }}</option>
                             @endforeach
                         </select>
                         @error('client_id')

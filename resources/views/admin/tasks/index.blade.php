@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('sidebar')
-    @include('admin.sidebar')
+    @include('admin.body.sidebar')
 @endsection
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
                         <span class="fs-4">
                             Tasks
                         </span>
-                        <a href="{{ route('admin.tasks.create') }}" class="btn btn-success text-white">Create Tasks</a>
+                <a href="{{ route('admin.tasks.create') }}" class="btn btn-success text-white">Create Tasks</a>
             </div>
             <div class="card-body">
                 <table class="table table-hover">
@@ -65,7 +65,8 @@
                                 @endswitch
                             </td>
                             <td class="d-flex align-items-center">
-                                <a href="{{ route('admin.tasks.edit', $task) }}" class="btn btn-info text-white d-inline-block me-2">Edit</a>
+                                <a href="{{ route('admin.tasks.edit', $task) }}"
+                                   class="btn btn-info text-white d-inline-block me-2">Edit</a>
                                 <form action="{{ route('admin.tasks.destroy', $task) }}" method="post">
                                     @csrf
                                     @method('DELETE')

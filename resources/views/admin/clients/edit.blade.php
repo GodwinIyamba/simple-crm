@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('sidebar')
-    @include('admin.sidebar')
+    @include('admin.body.sidebar')
 @endsection
 @section('content')
     <div class="container">
@@ -19,7 +19,7 @@
                         <label class="form-label">Name</label>
                         <input type="text" name="name" value="{{ $client->name }}" class="form-control" placeholder="">
                         @error('name')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
@@ -32,9 +32,10 @@
 
                     <div class="mb-3">
                         <label class="form-label">Address</label>
-                        <input type="text" name="address" value="{{ $client->address }}" class="form-control" placeholder="">
+                        <input type="text" name="address" value="{{ $client->address }}" class="form-control"
+                               placeholder="">
                         @error('address')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">

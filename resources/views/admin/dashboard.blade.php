@@ -1,45 +1,52 @@
 @extends('layouts.layout')
 @section('sidebar')
-    @include('admin.sidebar')
+    @include('admin.body.sidebar')
+@endsection
+@section('header')
+    @include('admin.body.header')
 @endsection
 @section('content')
     <div class="body flex-grow-1 px-3">
-            <div class="container-lg">
-                <div class="row">
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card  mb-4 text-white bg-primary">
-                            <div class="card-body">
-                                <div class="fs-3 fw-semibold mt-4">{{ $users->count() }}</div><span class=" text-uppercase text-white fw-semibold">Users</span>
-                            </div>
+        <div class="container-lg">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card  mb-4 text-white bg-primary">
+                        <div class="card-body">
+                            <div class="fs-3 fw-semibold mt-4">{{ $users->count() }}</div>
+                            <span class=" text-uppercase text-white fw-semibold">Users</span>
                         </div>
                     </div>
-                    <!-- /.col-->
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card mb-4 text-white bg-info">
-                            <div class="card-body">
-                                <div class="fs-3 fw-semibold mt-4">{{ $clients->count() }}</div><span class=" text-uppercase text-white fw-semibold">Clients</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col-->
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card mb-4 text-white bg-warning">
-                            <div class="card-body">
-                                <div class="fs-3 fw-semibold mt-4">{{ $projects->count() }}</div><span class=" text-uppercase text-white fw-semibold">Projects</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col-->
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="card mb-4 text-white bg-danger">
-                            <div class="card-body">
-                                <div class="fs-3 fw-semibold mt-4">{{ $tasks->count() }}</div><span class=" text-uppercase text-white fw-semibold">Tasks</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col-->
                 </div>
+                <!-- /.col-->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card mb-4 text-white bg-info">
+                        <div class="card-body">
+                            <div class="fs-3 fw-semibold mt-4">{{ $clients->count() }}</div>
+                            <span class=" text-uppercase text-white fw-semibold">Clients</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card mb-4 text-white bg-warning">
+                        <div class="card-body">
+                            <div class="fs-3 fw-semibold mt-4">{{ $projects->count() }}</div>
+                            <span class=" text-uppercase text-white fw-semibold">Projects</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-->
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card mb-4 text-white bg-danger">
+                        <div class="card-body">
+                            <div class="fs-3 fw-semibold mt-4">{{ $tasks->count() }}</div>
+                            <span class=" text-uppercase text-white fw-semibold">Tasks</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-->
             </div>
+        </div>
         @unless($users->isEmpty())
             <div class="container-lg mb-4">
                 <div class="card">
@@ -239,5 +246,9 @@
                 </div>
             </div>
         @endunless
-        </div>
+    </div>
+@endsection
+@section('scripts')
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 @endsection

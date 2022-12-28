@@ -42,7 +42,7 @@ class TaskAssigned extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = url('users/' . $this->task->user_id . '/tasks' );
+        $url = url('user/' . $this->task->user_id . '/tasks' );
         return (new MailMessage)
                     ->greeting('Hey, there.')
                     ->line('You have been assigned a task. Want to view the details? Click the button below.')

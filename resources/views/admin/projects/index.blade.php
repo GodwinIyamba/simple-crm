@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('sidebar')
-    @include('admin.sidebar')
+    @include('admin.body.sidebar')
 @endsection
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
                         <span class="fs-4">
                             Projects
                         </span>
-                        <a href="{{ route('admin.projects.create') }}" class="btn btn-success text-white">Create Project</a>
+                <a href="{{ route('admin.projects.create') }}" class="btn btn-success text-white">Create Project</a>
             </div>
             <div class="card-body">
                 <table class="table table-hover">
@@ -49,7 +49,8 @@
                                 @endswitch
                             </td>
                             <td class="d-flex align-items-center">
-                                <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-info text-white d-inline-block me-2">Edit</a>
+                                <a href="{{ route('admin.projects.edit', $project) }}"
+                                   class="btn btn-info text-white d-inline-block me-2">Edit</a>
                                 <form action="{{ route('admin.projects.destroy', $project) }}" method="post">
                                     @csrf
                                     @method('DELETE')

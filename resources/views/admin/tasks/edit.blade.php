@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('sidebar')
-    @include('admin.sidebar')
+    @include('admin.body.sidebar')
 @endsection
 @section('content')
     <div class="container">
@@ -19,7 +19,7 @@
                         <label class="form-label">Title</label>
                         <input type="text" name="title" value="{{ $task->title }}" class="form-control" placeholder="">
                         @error('title')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
@@ -38,14 +38,16 @@
                             @endforeach
                         </select>
                         @error('user_id')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deadline</label>
-                        <input type="date" name="deadline" value="{{ \Carbon\Carbon::parse($task->deadline)->format('Y-m-d') }}" min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" class="form-control" placeholder="">
+                        <input type="date" name="deadline"
+                               value="{{ \Carbon\Carbon::parse($task->deadline)->format('Y-m-d') }}"
+                               min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" class="form-control" placeholder="">
                         @error('deadline')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">

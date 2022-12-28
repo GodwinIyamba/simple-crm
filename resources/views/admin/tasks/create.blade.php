@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('sidebar')
-    @include('admin.sidebar')
+    @include('admin.body.sidebar')
 @endsection
 @section('content')
     <div class="container">
@@ -18,14 +18,14 @@
                         <label class="form-label">Title</label>
                         <input type="text" name="title" :value="{{ old('title') }}" class="form-control" placeholder="">
                         @error('title')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label">File<small>(if any)</small></label>
                         <input name="file" class="form-control" type="file">
                         @error('file')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
@@ -37,14 +37,15 @@
                             @endforeach
                         </select>
                         @error('user_id')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deadline</label>
-                        <input type="date" name="deadline" :value="{{ old('deadline') }}" min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" class="form-control" placeholder="">
+                        <input type="date" name="deadline" :value="{{ old('deadline') }}"
+                               min="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" class="form-control" placeholder="">
                         @error('deadline')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
@@ -57,7 +58,7 @@
                             <option value="4">Done</option>
                         </select>
                         @error('status')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
@@ -70,7 +71,7 @@
                             <option value="4">Critical</option>
                         </select>
                         @error('priority')
-                            <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">

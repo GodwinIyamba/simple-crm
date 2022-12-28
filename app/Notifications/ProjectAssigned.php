@@ -29,7 +29,7 @@ class ProjectAssigned extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -38,9 +38,10 @@ class ProjectAssigned extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
+
     public function toMail($notifiable)
     {
-        $url = url('users/' . $this->project->user_id . '/projects' );
+        $url = url('user/' . $this->project->user_id . '/projects' );
 
         return (new MailMessage)
             ->greeting('Hey, there.')
@@ -58,7 +59,8 @@ class ProjectAssigned extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'user_id' => $this->project->user_id,
+            'client_id' => $this->project->client_id,
         ];
     }
 }

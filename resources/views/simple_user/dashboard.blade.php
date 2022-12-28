@@ -3,7 +3,10 @@
 @endphp
 @extends('layouts.layout')
 @section('sidebar')
-    @include('simple_user.sidebar')
+    @include('simple_user.body.sidebar')
+@endsection
+@section('header')
+    @include('simple_user.body.header')
 @endsection
 @section('content')
     <div class="body flex-grow-1 px-3">
@@ -12,7 +15,8 @@
                 <div class="col-sm-6 col-lg-3">
                     <div class="card mb-4 text-white bg-info">
                         <div class="card-body">
-                            <div class="fs-3 fw-semibold mt-4">{{ $clients->count() }}</div><span class=" text-uppercase text-white fw-semibold">Clients</span>
+                            <div class="fs-3 fw-semibold mt-4">{{ $clients->count() }}</div>
+                            <span class=" text-uppercase text-white fw-semibold">Clients</span>
                         </div>
                     </div>
                 </div>
@@ -20,7 +24,8 @@
                 <div class="col-sm-6 col-lg-3">
                     <div class="card mb-4 text-white bg-warning">
                         <div class="card-body">
-                            <div class="fs-3 fw-semibold mt-4">{{ $projects->count() }}</div><span class=" text-uppercase text-white fw-semibold">Projects</span>
+                            <div class="fs-3 fw-semibold mt-4">{{ $projects->count() }}</div>
+                            <span class=" text-uppercase text-white fw-semibold">Projects</span>
                         </div>
                     </div>
                 </div>
@@ -28,7 +33,8 @@
                 <div class="col-sm-6 col-lg-3">
                     <div class="card mb-4 text-white bg-danger">
                         <div class="card-body">
-                            <div class="fs-3 fw-semibold mt-4">{{ $tasks->count() }}</div><span class=" text-uppercase text-white fw-semibold">Tasks</span>
+                            <div class="fs-3 fw-semibold mt-4">{{ $tasks->count() }}</div>
+                            <span class=" text-uppercase text-white fw-semibold">Tasks</span>
                         </div>
                     </div>
                 </div>
@@ -58,7 +64,7 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $client->name }}</td>
                                     <td>{{ $client->projects->count() }}</td>
-                                    </tr>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>
@@ -187,5 +193,10 @@
                 </div>
             </div>
         @endunless
-        </div>
+    </div>
+@endsection
+@section('script')
+    <script>
+        <script src="{{ asset('dashboard/vendors/@coreui/coreui/js/coreui.bundle.min.js')}}"></script>
+    </script>
 @endsection
