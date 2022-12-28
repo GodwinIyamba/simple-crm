@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +62,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::middleware('role:user')->prefix('user')->as('user.')->group(function(){
-        Route::view('/dashboard', 'simple_user.dashboard')->name('dashboard');
+        Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     });
 
     Route::middleware('role:admin')->prefix('admin')->as('admin.')->group(function(){
