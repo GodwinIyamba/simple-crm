@@ -64,7 +64,21 @@ Route::middleware([
     Route::middleware('role:user')->prefix('user')->as('user.')->group(function(){
         Route::get('/{user}/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
         Route::get('/{user}/clients', [UserController::class, 'client'])->name('clients');
+
         Route::get('/{user}/projects', [UserController::class, 'project'])->name('projects');
+
+        Route::as('project.status.')->group(function(){
+            Route::get('/{user}/projects/{project}/status/work', [UserController::class, 'projectWork'])->name('work')->scopeBindings();
+            Route::get('/{user}/projects/{project}/status/stuck', [UserController::class, 'projectStuck'])->name('stuck');
+            Route::get('/{user}/projects/{project}/status/done', [UserController::class, 'projectDone'])->name('done');
+        });
+
+        Route::as('task.status.')->group(function(){
+            Route::get('/{user}/tasks/{task}/status/work', [UserController::class, 'taskWork'])->name('work')->scopeBindings();
+            Route::get('/{user}/tasks/{task}/status/stuck', [UserController::class, 'taskStuck'])->name('stuck');
+            Route::get('/{user}/tasks/{task}/status/done', [UserController::class, 'taskDone'])->name('done');
+        });
+
         Route::get('{user}/tasks', [UserController::class, 'task'])->name('tasks');
     });
 

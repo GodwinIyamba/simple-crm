@@ -1,3 +1,6 @@
+@php
+    $user = auth()->user();
+@endphp
 @extends('layouts.layout')
 @section('sidebar')
     @include('simple_user.sidebar')
@@ -38,7 +41,7 @@
                         <span class="fs-4">
                             Clients
                         </span>
-                        <a href="{{ route('admin.clients.index') }}" class="btn btn-dark">View all</a>
+                        <a href="{{ route('user.clients', $user) }}" class="btn btn-dark">View all</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
@@ -50,7 +53,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($clients as $client)
+                            @foreach($clients->take(4) as $client)
                                 <tr class="align-middle">
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $client->name }}</td>
@@ -71,7 +74,7 @@
                         <span class="fs-4">
                             Projects
                         </span>
-                        <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">View all</a>
+                        <a href="{{ route('user.projects', $user) }}" class="btn btn-dark">View all</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
@@ -124,7 +127,7 @@
                         <span class="fs-4">
                             Tasks
                         </span>
-                        <a href="{{ route('admin.tasks.index') }}" class="btn btn-dark">View all</a>
+                        <a href="{{ route('user.tasks', $user) }}" class="btn btn-dark">View all</a>
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
