@@ -1,5 +1,6 @@
 @php
-    $user_notifications = auth()->user()->unreadNotifications
+    $user_notifications = auth()->user()->unreadNotifications;
+    $user = auth()->user();
 @endphp
 <style>
     .notification-dot {

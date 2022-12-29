@@ -29,12 +29,9 @@
             </div>
             <div class="card-body">
                 @if($user_notifications->isEmpty())
-                    <div class="col-md-8 text-center">
-                        <div class="clearfix">
-                            <h1 class="float-left display-3 me-4">Hey!</h1>
-                            <h4 class="pt-3">All caught up!</h4>
-                            <p class="text-medium-emphasis">You don't have any unread notificatons.</p>
-                        </div>
+                    <div class="col-md-12 text-center">
+                        <h4 class="pt-3"><span class="fs-1">Hey!</span> All caught up.</h4>
+                        <p class="text-medium-emphasis">You don't have any unread notificatons.</p>
                     </div>
                 @else
                     <ul class="list-group list-group-flush">
