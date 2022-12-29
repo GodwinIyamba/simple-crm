@@ -11,7 +11,7 @@ class TaskAssigned extends Notification
 {
     use Queueable;
 
-    protected $task;
+    protected mixed $task;
 
     /**
      * Create a new notification instance.
@@ -31,7 +31,7 @@ class TaskAssigned extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -58,8 +58,11 @@ class TaskAssigned extends Notification
      */
     public function toArray($notifiable)
     {
+        $url = url('user/' . $this->task->user_id . '/task/' . $this->task->id);
+
         return [
-            //
+            'message' => 'You have been assigned a new task. Let\'s get to work',
+            'link' => $url,
         ];
     }
 }

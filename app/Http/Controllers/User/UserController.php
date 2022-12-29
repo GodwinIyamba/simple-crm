@@ -39,10 +39,23 @@ class UserController extends Controller
         return view('simple_user.projects.index', compact('projects'));
     }
 
+    public function singleProject($user_id, $project_id)
+    {
+        $project = Project::findOrFail($project_id);
+        return view('simple_user.projects.show', compact('project'));
+
+    }
+
     public function task()
     {
         $tasks = Task::where('user_id', Auth::id())->where('status', '!=', '4')->get();
         return view('simple_user.tasks.index', compact('tasks'));
+    }
+
+    public function singleTask($user_id, $task_id)
+    {
+        $task = Task::findOrFail($task_id);
+        return view('simple_user.tasks.show', compact('task'));
     }
 
     public function projectWork(User $user, Project $project)
@@ -99,5 +112,29 @@ class UserController extends Controller
         ]);
 
         return back();
+    }
+
+    public function notifications(User $user)
+    {
+       $user_notifications = $user->notifications;
+
+       return view('simple_user.notifications.notification', compact('user_notifications'));
+    }
+    public function unreadNotifications(User $user)
+    {
+       $user_notifications = $user->unreadNotifications;
+
+       return view('simple_user.notifications.unread_notification', compact('user_notifications'));
+    }
+
+    public function readNotifications(User $user)
+    {
+        foreach ($user->notifications as $notification) {
+            $notification->MarkAsRead();
+        }
+
+        $user_notifications = $user->notifications;
+
+        return view('simple_user.notifications.notification', compact('user_notifications'));
     }
 }

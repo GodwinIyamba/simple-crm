@@ -34,7 +34,6 @@
                             <td class="col-4">{{ $task->title }}</td>
                             <td>{{ $task->user->name }}</td>
                             <td>{{ $task->deadline }}</td>
-
                             <td>
                                 @switch($task->status)
                                     @case(1)

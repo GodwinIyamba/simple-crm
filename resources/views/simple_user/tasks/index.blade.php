@@ -39,6 +39,7 @@
                             <th scope="col">Deadline</th>
                             <th scope="col">Status</th>
                             <th scope="col">Priority</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -81,11 +82,11 @@
                                 </td>
                                 <td class="d-flex align-items-center">
                                     <a href="{{ route('user.task.status.work', [$user, $task]) }}"
-                                       class="btn btn-warning text-white d-inline-block me-2">Working on it</a>
+                                       class="btn btn-warning btn-sm text-white d-inline-block me-2">Working on it</a>
                                     <a href="{{ route('user.task.status.stuck', [$user, $task]) }}"
-                                       class="btn btn-danger text-white d-inline-block me-2">Stuck</a>
+                                       class="btn btn-danger btn-sm text-white d-inline-block me-2">Stuck</a>
                                     <a href="{{ route('user.task.status.done', [$user, $task]) }}"
-                                       class="btn btn-success text-white d-inline-block me-2">Done</a>
+                                       class="btn btn-success btn-sm text-white d-inline-block me-2">Done</a>
                                 </td>
                             </tr>
                         @endforeach

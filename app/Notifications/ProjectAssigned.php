@@ -61,8 +61,11 @@ class ProjectAssigned extends Notification
      */
     public function toArray($notifiable)
     {
+        $url = url('user/' . $this->project->user_id . '/project/' . $this->project->id);
+
         return [
-            'client' => $this->client->name,
+            'message' => 'You have been assigned a project for ' . $this->client->name . '.',
+            'link' => $url,
         ];
     }
 }

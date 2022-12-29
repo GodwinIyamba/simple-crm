@@ -66,7 +66,7 @@ Route::middleware([
         Route::get('/{user}/clients', [UserController::class, 'client'])->name('clients');
 
         Route::get('/{user}/projects', [UserController::class, 'project'])->name('projects');
-
+        Route::get('/{user_id}/project/{project_id}', [UserController::class, 'singleProject']);
         Route::as('project.status.')->group(function(){
             Route::get('/{user}/projects/{project}/status/work', [UserController::class, 'projectWork'])->name('work')->scopeBindings();
             Route::get('/{user}/projects/{project}/status/stuck', [UserController::class, 'projectStuck'])->name('stuck');
@@ -79,7 +79,14 @@ Route::middleware([
             Route::get('/{user}/tasks/{task}/status/done', [UserController::class, 'taskDone'])->name('done');
         });
 
-        Route::get('{user}/tasks', [UserController::class, 'task'])->name('tasks');
+        Route::get('/{user}/tasks', [UserController::class, 'task'])->name('tasks');
+        Route::get('/{user_id}/task/{task_id}', [UserController::class, 'singleTask']);
+
+
+        Route::get('/{user}/notifications', [UserController::class, 'notifications'])->name('notifications');
+        Route::get('/{user}/unread-notifications', [UserController::class, 'unreadNotifications'])->name('unread.notifications');
+        Route::get('/{user}/read-notifications', [UserController::class, 'readNotifications'])->name('read.notifications');
+
     });
 
     Route::middleware('role:admin')->prefix('admin')->as('admin.')->group(function(){

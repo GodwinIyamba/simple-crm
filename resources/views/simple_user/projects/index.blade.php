@@ -21,8 +21,9 @@
                     </div>
                 </div>
             </div>
-            @else
-                <div class="container-lg mb-4">
+        </div>
+        @else
+        <div class="container-lg mb-4">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                         <span class="fs-4">
@@ -60,17 +61,17 @@
                                                     <span class="badge text-bg-danger">Stuck</span>
                                                     @break
                                                 @case(4)
-                                                    <span class="badge text-bg-isuccessnfo">Done</span>
+                                                    <span class="badge text-bg-success">Done</span>
                                                     @break
                                             @endswitch
                                         </td>
                                         <td class="d-flex align-items-center">
                                             <a href="{{ route('user.project.status.work', [$user, $project]) }}"
-                                               class="btn btn-warning text-white d-inline-block me-2">Working on it</a>
+                                               class="btn btn-warning btn-sm text-white d-inline-block me-2">Working on it</a>
                                             <a href="{{ route('user.project.status.stuck', [$user, $project]) }}"
-                                               class="btn btn-danger text-white d-inline-block me-2">Stuck</a>
+                                               class="btn btn-danger btn-sm text-white d-inline-block me-2">Stuck</a>
                                             <a href="{{ route('user.project.status.done', [$user, $project]) }}"
-                                               class="btn btn-success text-white d-inline-block me-2">Done</a>
+                                               class="btn btn-success btn-sm text-white d-inline-block me-2">Done</a>
                                         </td>
                                     </tr>
                                 @endforeach
