@@ -33,10 +33,11 @@ class ProjectController extends Controller
     public function store(ProjectStoreRequest $request)
     {
         $project = Project::create($request->validated());
+        $client = Client::findOrFail($project->client_id);
 
         $user = User::findOrFail($request->user_id);
 
-        $user->notify(new ProjectAssigned($project));
+        $user->notify(new ProjectAssigned([$project, $client]));
 
         return redirect()->route('admin.projects.index');
     }

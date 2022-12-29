@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use http\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -10,15 +11,17 @@ use Illuminate\Notifications\Notification;
 class ProjectAssigned extends Notification
 {
     use Queueable;
-    protected $project;
+    protected mixed $project;
+    protected mixed $client;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($project)
+    public function __construct($project_details)
     {
-        $this->project = $project;
+        $this->project = $project_details[0];
+        $this->client = $project_details[1];
     }
 
     /**
@@ -59,8 +62,7 @@ class ProjectAssigned extends Notification
     public function toArray($notifiable)
     {
         return [
-            'user_id' => $this->project->user_id,
-            'client_id' => $this->project->client_id,
+            'client' => $this->client->name,
         ];
     }
 }

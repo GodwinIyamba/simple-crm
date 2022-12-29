@@ -2,5 +2,8 @@
 @section('sidebar')
     @include('admin.body.sidebar')
 @endsection
+@section('header')
+    @include('admin.body.header')
+@endsection
 @section('content')
 @endsection

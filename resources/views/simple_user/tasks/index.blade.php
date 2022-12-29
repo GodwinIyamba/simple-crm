@@ -15,9 +15,9 @@
                 <div class="col-md-8">
                     <div class="clearfix">
                         <h1 class="float-start display-3 me-4">Hey!</h1>
-                        <h4 class="pt-3">You don't have any projects to work on!</h4>
+                        <h4 class="pt-3">You don't have any tasks to work on!</h4>
                         <p class="text-medium-emphasis">A mail will be sent to you once you've been assigned a
-                            project.</p>
+                            tasks.</p>
                     </div>
                 </div>
             </div>
