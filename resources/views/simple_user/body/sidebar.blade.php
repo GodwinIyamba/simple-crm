@@ -31,7 +31,7 @@
         {{--        Break--}}
         <ul class="sidebar-nav justify-content-end" data-coreui="navigation">
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('user.logout') }}">
                     <svg class="nav-icon">
                         <use xlink:href="{{ asset('dashboard/vendors/@coreui/icons/svg/free.svg#cil-account-logout')}}"></use>
                     </svg>

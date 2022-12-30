@@ -82,10 +82,11 @@ Route::middleware([
         Route::get('/{user}/tasks', [UserController::class, 'task'])->name('tasks');
         Route::get('/{user_id}/task/{task_id}', [UserController::class, 'singleTask']);
 
-
         Route::get('/{user}/notifications', [UserController::class, 'notifications'])->name('notifications');
         Route::get('/{user}/unread-notifications', [UserController::class, 'unreadNotifications'])->name('unread.notifications');
         Route::get('/{user}/read-notifications', [UserController::class, 'readNotifications'])->name('read.notifications');
+
+        Route::get('/logout', [UserController::class, 'userLogout'])->name('logout');
 
     });
 

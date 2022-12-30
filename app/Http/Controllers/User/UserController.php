@@ -137,4 +137,12 @@ class UserController extends Controller
 
         return view('simple_user.notifications.notification', compact('user_notifications'));
     }
+
+    public function userLogout()
+    {
+        Auth::guard('web')->logout();
+
+        return redirect('/');
+
+    }
 }
