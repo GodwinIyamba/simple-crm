@@ -47,7 +47,7 @@
                                         <span class="badge text-bg-danger">Stuck</span>
                                         @break
                                     @case(4)
-                                        <span class="badge text-bg-isuccessnfo">Done</span>
+                                        <span class="badge text-bg-success">Done</span>
                                         @break
                                 @endswitch
                             </td>
