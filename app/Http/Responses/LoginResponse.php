@@ -15,13 +15,12 @@ class LoginResponse implements LoginResponseContract
         foreach ($roles as $role) {
             switch ($role ) {
                 case 'user':
-                    return redirect()->route('user.dashboard', $user);
+                    return redirect()->route('user.dashboard');
                 case 'admin':
                     return redirect()->route('admin.dashboard');
                 default:
                     return redirect('/');
             }
-
         }
     }
 

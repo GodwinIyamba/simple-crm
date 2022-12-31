@@ -62,7 +62,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::middleware('role:user')->prefix('user')->as('user.')->group(function(){
-        Route::get('/{user}/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+        Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
         Route::get('/{user}/clients', [UserController::class, 'client'])->name('clients');
 
         Route::get('/{user}/projects', [UserController::class, 'project'])->name('projects');
