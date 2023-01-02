@@ -27,9 +27,13 @@ class UserController extends Controller
 
     public function client()
     {
-        $clients = Client::with('projects')->whereHas('projects', function (Builder $query) {
-            $query->where('user_id', Auth::id());
-        })->get();
+        $projects = Auth::user()->projects;
+        $clients = $projects->map(function($project) {
+            if($project->user_id == Auth::id()) {
+                return $project->client;
+            }
+        })->groupBy('name');
+
         return view('simple_user.clients.index', compact('clients'));
     }
 

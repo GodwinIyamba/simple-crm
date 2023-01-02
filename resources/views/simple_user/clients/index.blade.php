@@ -41,8 +41,8 @@
                     @foreach($clients as $client)
                         <tr class="align-middle">
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $client->name }}</td>
-                            <td>{{ $client->projects->count() }}</td>
+                            <td>{{ $client[0]->name }}</td>
+                            <td>{{ $client->count() }}</td>
                         </tr>
                     @endforeach
                     </tbody>
