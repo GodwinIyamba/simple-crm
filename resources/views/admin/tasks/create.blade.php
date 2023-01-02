@@ -4,7 +4,7 @@
 @endsection
 @section('header')
     @include('admin.body.header')
-@endsections
+@endsection
 @section('content')
     <div class="container">
         <div class="card mt-3">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\TaskAssignedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\tasks\TaskStoreRequest;
 use App\Http\Requests\tasks\TaskUpdateRequest;
@@ -32,9 +33,9 @@ class TaskController extends Controller
     public function store(TaskStoreRequest $request)
     {
         $task = Task::create($request->validated());
-
         $user = User::findOrFail($request->user_id);
-        $user->notify(new TaskAssigned($task));
+
+        TaskAssignedEvent::dispatch($task, $user);
 
         if ($request->hasFile('file')) {
             $task->addMediaFromRequest('file')->toMediaCollection('tasks');

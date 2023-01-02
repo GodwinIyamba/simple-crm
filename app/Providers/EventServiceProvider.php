@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\ProjectAssignedEvent;
+use App\Events\TaskAssignedEvent;
+use App\Listeners\SendProjectAssignedNotification;
+use App\Listeners\SendTaskAssignedNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -17,6 +21,14 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+
+        ProjectAssignedEvent::class => [
+            SendProjectAssignedNotification::class,
+        ],
+
+        TaskAssignedEvent::class => [
+            SendTaskAssignedNotification::class,
         ],
     ];
 

@@ -8,6 +8,7 @@ use App\Http\Requests\projects\ProjectUpdateRequest;
 use App\Models\Client;
 use App\Models\Project;
 use App\Models\User;
+use App\Events\ProjectAssignedEvent;
 use App\Notifications\ProjectAssigned;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -34,10 +35,9 @@ class ProjectController extends Controller
     {
         $project = Project::create($request->validated());
         $client = Client::findOrFail($project->client_id);
-
         $user = User::findOrFail($request->user_id);
 
-        $user->notify(new ProjectAssigned([$project, $client]));
+        ProjectAssignedEvent::dispatch($project, $client, $user);
 
         return redirect()->route('admin.projects.index');
     }
