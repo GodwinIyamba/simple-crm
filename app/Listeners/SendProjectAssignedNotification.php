@@ -4,11 +4,14 @@ namespace App\Listeners;
 
 use App\Events\ProjectAssignedEvent;
 use App\Notifications\ProjectAssigned;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
 class SendProjectAssignedNotification implements ShouldQueue
 {
+    use Queueable;
+
     /**
      * Create the event listener.
      *

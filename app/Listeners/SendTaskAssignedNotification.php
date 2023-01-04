@@ -4,11 +4,14 @@ namespace App\Listeners;
 
 use App\Events\TaskAssignedEvent;
 use App\Notifications\TaskAssigned;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class SendTaskAssignedNotification
+class SendTaskAssignedNotification implements ShouldQueue
 {
+    use Queueable;
+
     /**
      * Create the event listener.
      *
